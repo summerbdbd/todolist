@@ -1,0 +1,57 @@
+<html>
+    <style>
+
+        body {
+            background: #f4f4f4;
+            }
+        h1 {font: bold;
+           font-style: inherit;
+           font-size: 29pt;            
+           font-weight: 200;
+           line-height: 1.65;  }
+        body {
+            font-family: "Source Sans Pro", Helvetica, sans-serif;
+            font-size: 20pt;
+            font-weight: 200;
+            line-height: 1.65;    }
+            @media screen and (max-width: 1680px) {
+                body, input, select, textarea {
+                    font-size: 13pt;
+                }
+            }
+        body { text-align: center; }
+        form {
+            margin: 0 0 2em 0;
+        }
+        
+        div {
+            width : 700px;
+            border-radius: 4px;
+            border: solid 1px;
+            margin: 0 auto;
+            padding: 1.5em;;
+        }
+        button {
+            background-color:  #ffc400;
+            box-shadow: inset 0 0 0 12px #ffae00;        
+            color: #036d2f !important;
+        }
+        
+            </style>
+<body>
+    <br>
+    <br>
+    <h1>don't put off till tomorrow what you can do today</h1>
+    <br>
+
+    <div>
+        <form method="POST">
+            {% csrf_token %} {{ forms.as_p }}
+        </form>
+        {% for todo in todos %}
+        <p>{{ todo.task }} | <a href="{% url 'todo_complete' pk=todo.pk %}">완료</a></p>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
